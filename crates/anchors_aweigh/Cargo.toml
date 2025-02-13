@@ -1,0 +1,27 @@
+[package]
+name = "anchors_aweigh"
+version = "0.1.0"
+authors = ["Ben Falk <benjamin.falk@yahoo.com>"]
+edition = "2021"
+description = "versatile code reference from mdbook"
+keywords = ["book", "gitbook", "mdbook", "markdown", "plugin"]
+categories = ["command-line-utilities", "template-engine"]
+license = "MIT"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+anyhow = "1.0"
+thiserror = "2.0"
+tree-sitter = "0.25"
+handlebars = "6.3"
+tree-sitter-rust = "0.23"
+tree-sitter-ruby = "0.23"
+git2 = "0.20.0"
+nom = "8.0"
+
+[dev-dependencies]
+serde_json = "1.0"
+
+[build-dependencies]
+cc = "*"

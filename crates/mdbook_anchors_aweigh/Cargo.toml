@@ -1,0 +1,22 @@
+[package]
+name = "mdbook-anchors-aweigh"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "mdbook-anchors-aweigh"
+path = "src/bin/mdbook-anchors-aweigh.rs"
+
+[dependencies]
+# stuck at this version of toml for the time
+# being because mdbook is stuck at it as well
+toml = "0.5.11"
+
+mdbook = "0.4"
+anchors_aweigh = { path = "../anchors_aweigh/" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+log = "0.4"
+env_logger = "0.11"
+anyhow = "1.0"
+clap = { version = "4.5.30", features = ["derive"] }

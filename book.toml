@@ -1,0 +1,8 @@
+[book]
+authors = ["Ben Falk"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "Anchors Aweigh"
+
+[preprocessor.anchors-aweigh]
