@@ -11,6 +11,7 @@ pub enum Language {
     Javascript,
     Elixir,
     Json,
+    Markdown,
 }
 
 impl Language {
@@ -26,6 +27,7 @@ impl Language {
             "js" => Some(Self::Javascript),
             "ex" | "exs" => Some(Self::Elixir),
             "json" => Some(Language::Json),
+            "md" | "txt" => Some(Language::Markdown),
             _ => None,
         }
     }
@@ -53,6 +55,7 @@ impl From<Language> for tree_sitter::Language {
             Language::Javascript => tree_sitter_javascript::LANGUAGE.into(),
             Language::Elixir => tree_sitter_elixir::LANGUAGE.into(),
             Language::Json => tree_sitter_json::LANGUAGE.into(),
+            Language::Markdown => tree_sitter_md::LANGUAGE.into(),
         }
     }
 }

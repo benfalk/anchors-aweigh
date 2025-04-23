@@ -21,6 +21,7 @@ pub fn build_linker(ctx: &PreprocessorContext) -> Result<Linker> {
             "javascript" => Language::Javascript,
             "elixir" => Language::Elixir,
             "json" => Language::Json,
+            "markdown" => Language::Markdown,
             not_supported => {
                 bail!("[{not_supported}] is not supported.")
             }
