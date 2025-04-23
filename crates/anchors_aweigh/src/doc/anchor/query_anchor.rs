@@ -1,11 +1,11 @@
 //! Query Anchor
 
 use nom::branch::alt;
-use nom::bytes::complete::{tag, take_until};
-use nom::character::complete::alphanumeric1;
-use nom::combinator::{eof, rest, value};
+use nom::bytes::complete::{is_a, tag, take_until};
+use nom::character::complete::{alphanumeric1, space1};
+use nom::combinator::{eof, map, rest, value};
 use nom::error::Error;
-use nom::multi::fold_many0;
+use nom::multi::{fold_many0, many1};
 use nom::sequence::{preceded, separated_pair, terminated};
 use nom::{Finish, IResult, Parser};
 use serde::{Deserialize, Serialize};
@@ -44,8 +44,24 @@ fn anchor_name(input: &str) -> IResult<&str, String> {
     alt((take_until("?"), rest)).map(String::from).parse(input)
 }
 
+fn target_chars(input: &str) -> IResult<&str, String> {
+    map(
+        many1(alt((
+            alphanumeric1,
+            space1,
+            is_a("@!\"'$%^*_-+()<>[]{}/|;`"),
+            preceded(
+                tag("\\"),
+                alt((tag("\\"), tag("="), tag("&"), tag("?"), tag("#"), tag(":"))),
+            ),
+        ))),
+        |v| v.join(""),
+    )
+    .parse(input)
+}
+
 fn anchor_bindings(input: &str) -> IResult<&str, Bindings> {
-    let target = alt((terminated(alphanumeric1, tag("&")), alphanumeric1));
+    let target = alt((terminated(target_chars, tag("&")), target_chars));
     alt((
         value(Bindings::default(), eof),
         preceded(
@@ -76,5 +92,10 @@ mod test {
         let anchor = QueryAnchor::parse("mod").unwrap();
         assert_eq!(anchor.name, "mod");
         assert!(anchor.bindings.is_empty());
+
+        let anchor = QueryAnchor::parse("class?name=Foo bar&name2=\\?buzz\\&_\"").unwrap();
+        assert_eq!(anchor.name, "class");
+        assert_eq!(anchor.bindings.get("name").unwrap(), "Foo bar");
+        assert_eq!(anchor.bindings.get("name2").unwrap(), "?buzz&_\"");
     }
 }
