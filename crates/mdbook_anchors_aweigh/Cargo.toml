@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-anchors-aweigh"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 description = "versatile include tag preprocessor for mdbook"
 keywords = ["book", "gitbook", "mdbook", "markdown", "plugin"]
@@ -18,7 +18,7 @@ path = "src/bin/mdbook-anchors-aweigh.rs"
 toml = "0.5.11"
 
 mdbook = "0.4"
-anchors_aweigh = { version = "0.1", path = "../anchors_aweigh/" }
+anchors_aweigh = { version = "0.2", path = "../anchors_aweigh/" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 log = "0.4"

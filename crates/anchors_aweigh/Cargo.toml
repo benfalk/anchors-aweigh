@@ -1,6 +1,6 @@
 [package]
 name = "anchors_aweigh"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["Ben Falk <benjamin.falk@yahoo.com>"]
 edition = "2024"
 description = "versatile include tag preprocessor for mdbook"
@@ -15,7 +15,7 @@ log = "0.4"
 thiserror = "2.0"
 tree-sitter = "0.25"
 handlebars = "6.3"
-tree-sitter-rust = "0.23"
+tree-sitter-rust = "0.24"
 tree-sitter-ruby = "0.23"
 tree-sitter-toml-ng = "0.7.0"
 tree-sitter-javascript = "0.23"
