@@ -1,6 +1,6 @@
 [package]
 name = "anchors_aweigh"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Ben Falk <benjamin.falk@yahoo.com>"]
 edition = "2024"
 description = "versatile include tag preprocessor for mdbook"
@@ -13,15 +13,15 @@ repository = "https://github.com/benfalk/anchors-aweigh"
 serde = { version = "1.0", features = ["derive", "rc"] }
 log = "0.4"
 thiserror = "2.0"
-tree-sitter = "0.25"
+tree-sitter = "0.26"
 handlebars = "6.3"
 tree-sitter-rust = "0.24"
 tree-sitter-ruby = "0.23"
 tree-sitter-toml-ng = "0.7.0"
-tree-sitter-javascript = "0.23"
+tree-sitter-javascript = "0.25"
 tree-sitter-elixir = "0.3"
 tree-sitter-json = "0.24"
-tree-sitter-md = "0.3.2"
+tree-sitter-md = "0.5.1"
 nom = "8.0"
 
 [dev-dependencies]

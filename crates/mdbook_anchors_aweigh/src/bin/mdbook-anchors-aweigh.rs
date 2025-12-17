@@ -1,7 +1,7 @@
 use ::anyhow::Result;
 use ::clap::{Parser, Subcommand};
-use ::mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use ::mdbook_anchors_aweigh::AnchorsAweighLinker;
+use ::mdbook_preprocessor::{Preprocessor, parse_input};
 
 fn main() -> Result<()> {
     init_logging();
@@ -12,7 +12,7 @@ fn main() -> Result<()> {
             // all render systems afaik
         }
         Command::Process => {
-            let (ctx, book) = CmdPreprocessor::parse_input(std::io::stdin())?;
+            let (ctx, book) = parse_input(std::io::stdin())?;
             let linker = AnchorsAweighLinker;
             let book = linker.run(&ctx, book)?;
             serde_json::to_writer(std::io::stdout(), &book)?;

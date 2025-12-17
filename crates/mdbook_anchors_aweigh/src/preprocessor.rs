@@ -1,7 +1,7 @@
 use ::anchors_aweigh::{doc::DocFile, linker::Linker};
 use ::anyhow::{Context, Result};
-use ::mdbook::book::{Book, BookItem, Chapter};
-use ::mdbook::preprocess::{Preprocessor, PreprocessorContext};
+use ::mdbook_preprocessor::book::{Book, BookItem, Chapter};
+use ::mdbook_preprocessor::{Preprocessor, PreprocessorContext};
 
 #[derive(Debug)]
 pub struct AnchorsAweighLinker;

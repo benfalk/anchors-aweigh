@@ -70,7 +70,7 @@ fn anchor_bindings(input: &str) -> IResult<&str, Bindings> {
                 separated_pair(alphanumeric1, tag("="), target),
                 Bindings::default,
                 |mut hashmap, (left, right)| {
-                    hashmap.insert(String::from(left), String::from(right));
+                    hashmap.insert(String::from(left), right);
                     hashmap
                 },
             ),

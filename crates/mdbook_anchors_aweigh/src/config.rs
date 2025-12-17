@@ -1,12 +1,12 @@
 use ::anyhow::{Context, Result};
-use ::mdbook::preprocess::PreprocessorContext;
-use toml::{Value, map::Map};
+use ::mdbook_preprocessor::PreprocessorContext;
+use ::toml::{Value, map::Map};
 
-pub struct Config<'a> {
-    toml: &'a Map<String, Value>,
+pub struct Config {
+    toml: Map<String, Value>,
 }
 
-impl Config<'_> {
+impl Config {
     pub fn table(&self, key: &str) -> Map<String, Value> {
         self.toml
             .get(key)
@@ -62,14 +62,15 @@ impl Config<'_> {
     }
 }
 
-impl<'a> TryFrom<&'a PreprocessorContext> for Config<'a> {
+impl TryFrom<&PreprocessorContext> for Config {
     type Error = anyhow::Error;
 
-    fn try_from(ctx: &'a PreprocessorContext) -> Result<Self> {
+    fn try_from(ctx: &PreprocessorContext) -> Result<Self> {
         let toml = ctx
             .config
-            .get_preprocessor("anchors-aweigh")
-            .context("[preprocessor.anchors-aweigh] config missing")?;
-        Ok(Config { toml })
+            .get("preprocessor.anchors-aweigh")
+            .context("error fetching preprocessor config")?
+            .context("missing [preprocessor.anchors-aweigh")?;
+        Ok(Self { toml })
     }
 }
