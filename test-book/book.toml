@@ -1,0 +1,27 @@
+[book]
+src = "docs"
+title = "Test Book"
+
+[preprocessor.anchors-aweigh]
+
+[preprocessor.anchors-aweigh.queries.rust]
+
+struct = """
+(
+ (line_comment)*
+ .
+ (attribute_item)*
+ .
+ (struct_item name: (type_identifier) @name (#eq? @name "{{name}}"))
+) @match
+"""
+
+enum = """
+(
+ (line_comment)*
+ .
+ (attribute_item)*
+ .
+ (enum_item name: (type_identifier) @name (#eq? @name "{{name}}"))
+) @match
+"""

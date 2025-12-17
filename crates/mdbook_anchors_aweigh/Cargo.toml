@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-anchors-aweigh"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 description = "versatile include tag preprocessor for mdbook"
 keywords = ["book", "gitbook", "mdbook", "markdown", "plugin"]
@@ -13,12 +13,9 @@ name = "mdbook-anchors-aweigh"
 path = "src/bin/mdbook-anchors-aweigh.rs"
 
 [dependencies]
-# stuck at this version of toml for the time
-# being because mdbook is stuck at it as well
-toml = "0.5.11"
-
-mdbook = "0.4"
-anchors_aweigh = { version = "0.2", path = "../anchors_aweigh/" }
+toml = "0.9.8"
+mdbook-preprocessor = "0.5.2"
+anchors_aweigh = { version = "0.3", path = "../anchors_aweigh/" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 log = "0.4"

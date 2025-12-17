@@ -54,11 +54,15 @@ matched by that query:
 {{#aa file.rb#class?name=Widget}}
 ```
 
+## mdBook Compatibility
+
+If you are using mdBook version 0.4.x please use version 0.2.x of this
+plugin.  Version 0.3.x and up of this plugin requires mdBook 0.5.x or
+newer.
+
 ## Installing
 
-This project is currently in pre-release and is not yet available on
-crates.io.  For the time being it must be built locally.  For that
-reason you'll need a [rust environment setup].
+### From Source
 
 1. Clone the repo
 
@@ -72,10 +76,21 @@ reason you'll need a [rust environment setup].
    cargo install --path=crates/mdbook_anchors_aweigh
    ```
 
+### With Cargo
+
+```bash
+cargo install mdbook-anchors-aweigh
+```
+
+### With Cargo Binstall
+
+```bash
+cargo-binstall mdbook-anchors-aweigh
+```
+
 ---
 
 [mdBook]: https://rust-lang.github.io/mdBook/
 [treesitter queries]: https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html
 [`include`]: https://rust-lang.github.io/mdBook/format/mdbook.html#including-files
-[rust environment setup]: https://rustup.rs/
 [handlebars]: https://github.com/sunng87/handlebars-rust

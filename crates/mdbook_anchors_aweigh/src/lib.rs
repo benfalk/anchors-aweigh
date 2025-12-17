@@ -1,6 +1,6 @@
 use ::anchors_aweigh::{linker::Linker, source::Language};
 use ::anyhow::{Result, bail};
-use ::mdbook::preprocess::PreprocessorContext;
+use ::mdbook_preprocessor::PreprocessorContext;
 
 mod config;
 mod preprocessor;
